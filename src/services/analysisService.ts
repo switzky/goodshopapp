@@ -24,7 +24,7 @@ export interface AnalysisResult {
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 if (!API_KEY) {
-  console.error("Błąd: Klucz VITE_GEMINI_API_KEY nie został znaleziony w Vercel");
+  console.error("BŁĄD KRYTYCZNY: Brak klucza VITE_GEMINI_API_KEY w ustawieniach Vercel");
 }
 
 export const performProductAnalysis = async (

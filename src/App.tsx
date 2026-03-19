@@ -194,9 +194,9 @@ const App: React.FC = () => {
               <ShieldAlert className="w-10 h-10 text-red-500" />
             </div>
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold tracking-tight text-red-500">Błąd: Brak klucza API</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-red-500">BŁĄD KRYTYCZNY</h2>
               <p className="text-zinc-400 text-sm leading-relaxed">
-                Błąd: Klucz <code>VITE_GEMINI_API_KEY</code> nie został znaleziony w Vercel. Skonfiguruj zmienną środowiskową w panelu Vercel.
+                Brak klucza <code>VITE_GEMINI_API_KEY</code> w ustawieniach Vercel.
               </p>
             </div>
           </div>
