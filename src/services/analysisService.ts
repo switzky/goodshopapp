@@ -22,9 +22,9 @@ export interface AnalysisResult {
   recommendation?: string;
 }
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
 if (!API_KEY) {
-  console.error("BŁĄD KRYTYCZNY: Brak klucza VITE_GEMINI_API_KEY w ustawieniach Vercel");
+  console.error("BŁĄD KRYTYCZNY: Brak klucza API (VITE_GEMINI_API_KEY lub GEMINI_API_KEY)");
 }
 
 export const performProductAnalysis = async (
@@ -36,7 +36,7 @@ export const performProductAnalysis = async (
   if (!apiKey) throw new Error("API Key is required");
 
   const genAI = new GoogleGenAI({ apiKey });
-  const model = "gemini-1.5-flash";
+  const model = "gemini-3-flash-preview";
 
   const currentTime = new Date().toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
   const currentDate = new Date().toLocaleDateString('pl-PL');

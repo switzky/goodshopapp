@@ -31,7 +31,7 @@ function cn(...inputs: ClassValue[]) {
 
 const App: React.FC = () => {
   // --- State ---
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || "";
   const [image, setImage] = useState<string | null>(null);
   const [textDescription, setTextDescription] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
@@ -49,7 +49,7 @@ const App: React.FC = () => {
   // --- Effects ---
   useEffect(() => {
     if (!apiKey) {
-      console.error("Błąd: Klucz VITE_GEMINI_API_KEY nie został znaleziony w Vercel");
+      console.error("BŁĄD KRYTYCZNY: Brak klucza API");
     }
     // Load history
     setHistory(historyService.getHistory());
@@ -196,7 +196,7 @@ const App: React.FC = () => {
             <div className="space-y-2">
               <h2 className="text-2xl font-bold tracking-tight text-red-500">BŁĄD KRYTYCZNY</h2>
               <p className="text-zinc-400 text-sm leading-relaxed">
-                Brak klucza <code>VITE_GEMINI_API_KEY</code> w ustawieniach Vercel.
+                Brak klucza API. Skonfiguruj <code>VITE_GEMINI_API_KEY</code> w Vercel lub <code>GEMINI_API_KEY</code> w AI Studio.
               </p>
             </div>
           </div>
